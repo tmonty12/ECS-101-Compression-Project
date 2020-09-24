@@ -13,17 +13,21 @@ bitString = ""
 # We are going to iterate over the string, find the character and concatenate it to bitString
 i = 0
 while i < len(string):
-    #Inside the while loop we are going to have to check three cases
-    #If the current three characters are inside our compression table
-    #If the current three characters aren't, then we need to check the first two characters
-    #If neither case applies than we will just have to represent the first character
-    #To access the current character you would type: string[i]
-    #For the first two, string[i]+string[i+1], same trend for the third
-    #To check if a character combination is in the table use the statement: (insert character you are looking for) in conversionTable
-    #Make sure to increment i by how many ever characters you were able to represent
-    #Also add the binary value to the bitString
+    #Check to see if there is three characters or more and see if the current three character combination is in the conversionTable
+    if(len(string) - i > 2 and string[i]+string[i+1]+string[i+2] in conversionTable):
+        #If true, add the binary compression to the bitString and increment by 3
+        bitString += conversionTable[string[i]+string[i+1]+string[i+2]]
+        i += 3
+    #Check if there is two characters and if the current two letter combination is in the conversionTable
+    elif(len(string) - i > 1 and string[i]+string[i+1] in conversionTable):
+        bitString += conversionTable[string[i]+string[i+1]]
+        i += 2
+    #If all else fails, just use the single character binary compression
+    else:
+        bitString += conversionTable[string[i]]
+        i += 1
 
-print(bitString)
+print(str(len(bitString))+'.'+bitString)
 
 
 
