@@ -1,4 +1,4 @@
-# ECS-101-Compression Project
+# ECS-101-Compression-Project
 
 The compression program compresses a text file into the shortest possible bit string using a conversion table that priortizes the most common letters, two letter and three letter combinations/words. The output is the number of bits needed to encode the text file followed by the bit string.
 
